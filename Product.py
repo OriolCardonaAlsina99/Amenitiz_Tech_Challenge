@@ -12,11 +12,3 @@ class Product:
     
     def getPrice(self):
         return self.price
-
-prod = Product('STR', 'Strawberries', 2.5)
-
-print (prod.getId())
-
-print (prod.getName())
-
-print (prod.getPrice())
