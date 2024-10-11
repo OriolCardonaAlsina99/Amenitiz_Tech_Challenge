@@ -6,9 +6,10 @@ def print_total (products, total_price):
     products_codes = ''
     for p in products:
         products_codes = products_codes + p.getId() + ','
-        if(p.getId() != ('GR1' and 'SR1' and 'CF1')):
+        if (p.getId() != 'GR1' and p.getId() != 'SR1' and p.getId() != 'CF1'):
             total_price += p.getPrice()
-    print('| ' + products_codes[:-1] + ' | ' + str(total_price) + ' |')
+            print(total_price)
+    print('| ' + products_codes[:-1] + ' | ' + str(total_price) + '€ |')
 
 def CEO_rule (products):
     price = 0
@@ -17,7 +18,7 @@ def CEO_rule (products):
     size_arr = len(products)
     if (size_arr < 2):
         return price
-    if(size_arr%2 == 0):
+    if (size_arr%2 == 0):
         return price/2
     else:
         green_tea_price = products[0].getPrice()
@@ -50,7 +51,7 @@ def VP_rule(products):
         return price
     else: 
         coffies_price = products[0].getPrice()
-        while(size_arr%3 != 0):
+        while (size_arr%3 != 0):
             size_arr -= 1
             final_price += coffies_price
         final_price += (coffies_price*size_arr*2)/3
@@ -61,32 +62,36 @@ def check_rules(products):
     strawberries = []
     coffies = []
     for p in products:
-        if(p.getId() == 'GR1'):
+        if (p.getId() == 'GR1'):
             green_teas.append(p)
-        if(p.getId() == 'SR1'):
+        if (p.getId() == 'SR1'):
             strawberries.append(p)
-        if(p.getId() == 'CF1'):
+        if (p.getId() == 'CF1'):
             coffies.append(p)
     price_rule1 = CEO_rule(green_teas)
+    #print(price_rule1)
     price_rule2 = COO_rule(strawberries)
+    #print(price_rule2)
     price_rule3 = VP_rule(coffies)
+    #print(price_rule3)
     total_price = price_rule1 + price_rule2 + price_rule3
     return total_price
 
-
-print ('| Product Code | Name | Price |') 
-print ('|--|--|--|')
-products = []
-total_price = 0
 while True:
-    identifier = input()
-    prod_name = input()
-    prod_price = input()
-    if((identifier or prod_name or prod_price) == ''):
-        break
-    product = Product(identifier, prod_name, float(prod_price))
-    print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + ' |')
-    products.append(product)
+    print ('| Product Code | Name | Price |') 
+    print ('|--|--|--|')
+    products = []
+    total_price = 0
+    while True:
+        identifier = input()
+        prod_name = input()
+        prod_price = input()
+        if((identifier or prod_name or prod_price) == ''):
+            break
+        product = Product(identifier, prod_name, float(prod_price))
+        print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + '€ |')
+        products.append(product)
 
-total_price += check_rules(products)
-print_total(products, total_price)
+    total_price += check_rules(products)
+    print_total(products, total_price)
+    print('\n')
