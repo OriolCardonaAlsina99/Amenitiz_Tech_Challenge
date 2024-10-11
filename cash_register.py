@@ -1,5 +1,14 @@
 from Product import Product
 
+def print_total (products, total_price):
+    print('| Basket | Total price expected |')
+    print('|--|--|')
+    products_codes = ''
+    for p in products:
+        products_codes = products_codes + p.getId() + ','
+    print('| ' + products_codes[:-1] + ' | ' + str(total_price) + ' |')
+
+
 print ('| Product Code | Name | Price |')
 print ('|--|--|--|')
 products = []
@@ -10,5 +19,8 @@ while True:
     prod_price = input()
     if((identifier or prod_name or prod_price) == ''):
         break
-    prod = Product(identifier, prod_name, prod_price)
-    print('| ' + prod.getId() + ' | ' + prod.getName() + ' | ' + prod.getPrice() + ' |')
+    product = Product(identifier, prod_name, float(prod_price))
+    print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + ' |')
+    products.append(product)
+    total_price += product.getPrice()
+print_total(products, total_price)
