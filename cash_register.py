@@ -8,8 +8,22 @@ def print_total (products, total_price):
         products_codes = products_codes + p.getId() + ','
     print('| ' + products_codes[:-1] + ' | ' + str(total_price) + ' |')
 
+def CEO_rule (products):
+    green_teas = []
+    price = 0
+    for p in products:
+        if(p.getId() == 'GR1'):
+            green_teas.append(p)
+            price += p.getPrice()
+    if(len(green_teas)%2 == 0):
+        return price/2
+    else:
+        green_tea_price = products[0].getPrice()
+        size_arr = len(green_teas) - 1
+        final_price = (green_tea_price*size_arr)/2 + green_tea_price
+        return final_price
 
-print ('| Product Code | Name | Price |')
+print ('| Product Code | Name | Price |') 
 print ('|--|--|--|')
 products = []
 total_price = 0
@@ -22,5 +36,7 @@ while True:
     product = Product(identifier, prod_name, float(prod_price))
     print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + ' |')
     products.append(product)
-    total_price += product.getPrice()
+
+price_rule1 = CEO_rule(products)
+total_price += price_rule1
 print_total(products, total_price)
