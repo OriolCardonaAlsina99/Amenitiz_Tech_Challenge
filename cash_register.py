@@ -1,5 +1,7 @@
 from Product import Product
 from ceo_rule import CEO_rule
+from vp_rule import VP_rule
+from coo_rule import COO_rule
 
 def print_total (products, total_price):
     print('| Basket | Total price expected |')
@@ -11,38 +13,6 @@ def print_total (products, total_price):
             total_price += p.getPrice()
             print(total_price)
     print('| ' + products_codes[:-1] + ' | ' + str(total_price) + '€ |')
-
-def COO_rule(products):
-    price = 0
-    final_price = 0
-    for p in products:
-        price += p.getPrice()
-    size_arr = len(products)
-    if (size_arr  < 3): 
-        return price
-    else: 
-        strawberries_price = products[0].getPrice()
-        while(size_arr%3 != 0):
-            size_arr -= 1
-            final_price += strawberries_price
-        final_price += 4.5*3*(size_arr/3)
-        return final_price
-    
-def VP_rule(products):
-    price = 0
-    final_price = 0
-    for p in products:
-        price += p.getPrice()
-    size_arr = len(products)
-    if (size_arr  < 3): 
-        return price
-    else: 
-        coffies_price = products[0].getPrice()
-        while (size_arr%3 != 0):
-            size_arr -= 1
-            final_price += coffies_price
-        final_price += (coffies_price*size_arr*2)/3
-        return final_price
     
 def check_rules(products):
     green_teas = []

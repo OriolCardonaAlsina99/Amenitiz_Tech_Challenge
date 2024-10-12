@@ -10,4 +10,5 @@ def CEO_rule (products):
     else:
         green_tea_price = products[0].getPrice()
         size_arr = len(products) - 1
-        return ((green_tea_price*size_arr)/2 + green_tea_price)
+        final_price = ((green_tea_price*size_arr)/2 + green_tea_price)
+        return round(final_price, 2)
