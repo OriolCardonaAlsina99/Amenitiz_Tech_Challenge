@@ -2,7 +2,7 @@ import unittest
 from Product import Product
 from coo_rule import COO_rule
 
-class TestVPRule (unittest.TestCase):
+class TestCOORule (unittest.TestCase):
 
     def test_no_offer(self):
         prod1 = Product('SR1', 'Strawberries', 5)
