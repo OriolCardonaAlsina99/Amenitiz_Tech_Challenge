@@ -2,19 +2,20 @@ from modules.Product import Product
 from modules.check_rules import handle_rules
 from modules.check_basket import handle_basket
 
-def close_program(id, name, price):
-    if (id != 'close_cash_register' and name != 'close_cash_register' and price != 'close_cash_register'):
+def close_program(id, name):
+    if (id != 'close_cash_register' and name != 'close_cash_register'):
         return False
     else:
         return True
 
 def compute():
-    identifier = ''
-    prod_name = ''
-    prod_price = ''
-    while not close_program(identifier, prod_name, prod_price):
-        print('| Product Code | Name | Price |') 
-        print('|--|--|--|')
+    identifier = None
+    prod_name = None
+    prod_price = 0.0
+    while not close_program(identifier, prod_name):
+        if(identifier != '' and prod_name != ''):
+            print('| Product Code | Name | Price |') 
+            print('|--|--|--|')
         products = []
         ids = ''
         while True:
@@ -34,9 +35,9 @@ def compute():
 
         rules_prices = handle_rules(products)
         total_price = handle_basket(products, rules_prices)
-        print('| Basket | Total price expected |')
-        print('|--|--|')
-        print('| ' + ids[:-1] + ' | ' + str(total_price) + '€ |')
-        print('\n')
+        if not close_program(identifier, prod_name):
+            print('| Basket | Total price expected |')
+            print('|--|--|')
+            print('| ' + ids[:-1] + ' | ' + str(total_price) + '€ |')
     
 compute()
