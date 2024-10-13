@@ -2,8 +2,8 @@ import unittest
 import sys
 parent_dir = ".."
 sys.path.append(parent_dir)
-from Product import Product
-from rules.check_basket import handle_basket
+from modules.Product import Product
+from modules.check_basket import handle_basket
 
 class TestCheckBasket (unittest.TestCase):
     def test_no_especial_products(self):

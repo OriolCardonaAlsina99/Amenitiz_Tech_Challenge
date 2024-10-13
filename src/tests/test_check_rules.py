@@ -2,8 +2,8 @@ import unittest
 import sys
 parent_dir = ".."
 sys.path.append(parent_dir)
-from Product import Product
-from rules.check_rules import check_rules
+from modules.Product import Product
+from modules.check_rules import check_rules
 
 class TestCheckRules (unittest.TestCase):
 
