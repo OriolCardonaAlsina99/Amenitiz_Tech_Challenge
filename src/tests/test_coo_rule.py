@@ -1,6 +1,9 @@
 import unittest
+import sys
+parent_dir = ".."
+sys.path.append(parent_dir)
 from Product import Product
-from coo_rule import COO_rule
+from rules.coo_rule import COO_rule
 
 class TestCOORule (unittest.TestCase):
 

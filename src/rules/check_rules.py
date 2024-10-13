@@ -1,6 +1,6 @@
-from CEO_rule.ceo_rule import CEO_rule
-from COO_rule.coo_rule import COO_rule
-from VP_rule.vp_rule import VP_rule
+from rules.ceo_rule import CEO_rule
+from rules.coo_rule import COO_rule
+from rules.vp_rule import VP_rule
 
 def check_rules(products):
     green_teas = []

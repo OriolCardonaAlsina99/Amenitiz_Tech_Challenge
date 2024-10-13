@@ -1,5 +1,5 @@
 from Product import Product
-from check_rules import check_rules
+from rules.check_rules import check_rules
 
 def print_total (products, total_price):
     print('| Basket | Total price expected |')

@@ -1,6 +1,9 @@
 import unittest
+import sys
+parent_dir = ".."
+sys.path.append(parent_dir)
 from Product import Product
-from ceo_rule import CEO_rule
+from rules.ceo_rule import CEO_rule
 
 class TestCEORule (unittest.TestCase):
 
