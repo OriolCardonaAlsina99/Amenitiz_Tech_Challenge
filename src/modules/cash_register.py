@@ -2,8 +2,17 @@ from modules.Product import Product
 from modules.check_rules import handle_rules
 from modules.check_basket import handle_basket
 
+def close_program(id, name, price):
+    if (id != 'close_cash_register' and name != 'close_cash_register' and price != 'close_cash_register'):
+        return False
+    else:
+        return True
+
 def compute():
-    while True:
+    identifier = ''
+    prod_name = ''
+    prod_price = ''
+    while not close_program(identifier, prod_name, prod_price):
         print('| Product Code | Name | Price |') 
         print('|--|--|--|')
         products = []
