@@ -2,7 +2,7 @@ from modules.ceo_rule import CEO_rule
 from modules.coo_rule import COO_rule
 from modules.vp_rule import VP_rule
 
-def check_rules(products):
+def handle_rules(products):
     green_teas = []
     strawberries = []
     coffies = []

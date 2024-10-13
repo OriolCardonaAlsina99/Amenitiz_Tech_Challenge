@@ -1,11 +1,11 @@
-from Product import Product
-from modules.check_rules import check_rules
+from modules.Product import Product
+from modules.check_rules import handle_rules
 from modules.check_basket import handle_basket
 
 def compute():
     while True:
-        print ('| Product Code | Name | Price |') 
-        print ('|--|--|--|')
+        print('| Product Code | Name | Price |') 
+        print('|--|--|--|')
         products = []
         ids = ''
         while True:
@@ -23,7 +23,8 @@ def compute():
             products.append(product)
             ids += product.getId() + ','
 
-        total_price = handle_basket(products, check_rules(products))
+        rules_prices = handle_rules(products)
+        total_price = handle_basket(products, rules_prices)
         print('| Basket | Total price expected |')
         print('|--|--|')
         print('| ' + ids[:-1] + ' | ' + str(total_price) + '€ |')

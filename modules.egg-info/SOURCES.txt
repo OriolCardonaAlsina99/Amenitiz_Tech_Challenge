@@ -1,0 +1,14 @@
+README.md
+setup.py
+modules.egg-info/PKG-INFO
+modules.egg-info/SOURCES.txt
+modules.egg-info/dependency_links.txt
+modules.egg-info/top_level.txt
+src/modules/Product.py
+src/modules/__init__.py
+src/modules/cash_register.py
+src/modules/ceo_rule.py
+src/modules/check_basket.py
+src/modules/check_rules.py
+src/modules/coo_rule.py
+src/modules/vp_rule.py
