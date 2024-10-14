@@ -8,6 +8,13 @@ def close_program(id, name):
     else:
         return True
 
+def price_is_float(price):
+    try:
+        float(price)
+        return True
+    except ValueError:
+        return False
+
 def compute():
     identifier = None
     prod_name = None
@@ -28,10 +35,14 @@ def compute():
             prod_price = input()
             if(prod_price == ''):
                 break
-            product = Product(identifier, prod_name, float(prod_price))
-            print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + '€ |')
-            products.append(product)
-            ids += product.getId() + ','
+            if(price_is_float(prod_price)):
+                price = float(prod_price)
+                product = Product(identifier, prod_name, price)
+                print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + '€ |')
+                products.append(product)
+                ids += product.getId() + ','
+            else:
+                print("Price must be a number")
 
         rules_prices = handle_rules(products)
         total_price = handle_basket(products, rules_prices)

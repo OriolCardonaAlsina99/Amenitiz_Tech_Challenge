@@ -26,6 +26,26 @@ class TestCashRegister (unittest.TestCase):
         result = '| Product Code | Name | Price |\n' + '|--|--|--|\n' + '| Basket | Total price expected |\n' + '|--|--|\n' + '|  | 0€ |'
         self.assertEqual(output, result) 
         self.assertEqual(mock_input.call_count, 3)
+    
+    @patch('builtins.input')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_two_products(self, stdout_mock, mock_input):
+        mock_input.side_effect = ["GR1", "Green Tea", 3.11, "SR1", "Strawberries", 5, '', 'close_cash_register', '']
+        compute()
+        output = stdout_mock.getvalue().strip()
+        result = '| Product Code | Name | Price |\n' + '|--|--|--|\n' + '| GR1 | Green Tea | 3.11€ |\n' + '| SR1 | Strawberries | 5.0€ |\n' + '| Basket | Total price expected |\n' + '|--|--|\n' + '| GR1,SR1 | 8.11€ |'
+        self.assertEqual(output, result) 
+        self.assertEqual(mock_input.call_count, 9)
+
+    @patch('builtins.input')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_wrong_price(self, stdout_mock, mock_input):
+        mock_input.side_effect = ["Test", "Test", "Test", 'close_cash_register', '']
+        compute()
+        output = stdout_mock.getvalue().strip()
+        result = '| Product Code | Name | Price |\n' + '|--|--|--|\n' + 'Price must be a number'
+        self.assertEqual(output, result) 
+        self.assertEqual(mock_input.call_count, 5)
 
 if __name__ == '__main__':
     unittest.main()
