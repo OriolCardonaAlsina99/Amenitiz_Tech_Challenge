@@ -7,6 +7,7 @@ from modules.check_rules import handle_rules
 
 class TestCheckRules (unittest.TestCase):
 
+    # Test to check if each method is accessed
     def test_one_of_each(self):
         prod1 = Product('GR1', 'Green Tea', 3.11)
         prod2 = Product('SR1', 'Strawberries', 5)
@@ -14,7 +15,14 @@ class TestCheckRules (unittest.TestCase):
         arr_prods = [prod1, prod2, prod3]
         result = handle_rules(arr_prods)
         self.assertEqual(result, 19.34)
-    
+
+    # Test when no products are introduced
+    def test_no_products(self):
+        arr_prods = []
+        result = handle_rules(arr_prods)
+        self.assertEqual(result, 0)
+
+    # Test for the example number 2 of the assignment
     def test_case_2_assignment(self):
         prod1 = Product('SR1', 'Strawberries', 5)
         prod2 = Product('SR1', 'Strawberries', 5)
@@ -24,6 +32,7 @@ class TestCheckRules (unittest.TestCase):
         result = handle_rules(arr_prods)
         self.assertEqual(result, 16.61)
 
+    # Test for the example number 3 of the assignment
     def test_case_3_assignment(self):
         prod1 = Product('GR1', 'Green Tea', 3.11)
         prod2 = Product('CF1', 'Coffee', 11.23)
@@ -34,6 +43,7 @@ class TestCheckRules (unittest.TestCase):
         result = handle_rules(arr_prods)
         self.assertEqual(result, 30.57)
 
+    # Test to check when many special offers are applied
     def test_long_shopping(self):
         prod1 = Product('GR1', 'Green Tea', 3.11)
         prod2 = Product('SR1', 'Strawberries', 5)
@@ -42,6 +52,7 @@ class TestCheckRules (unittest.TestCase):
         result = handle_rules(arr_prods)
         self.assertEqual(result, 110.99)
         
-
+if __name__ == '__main__':
+    unittest.main()
 
         
