@@ -29,6 +29,26 @@ class TestCashRegister (unittest.TestCase):
     
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+    def test_wrong_input_1(self, stdout_mock, mock_input):
+        mock_input.side_effect = ['GR1', '', 'close_cash_register', '']
+        compute()
+        output = stdout_mock.getvalue().strip()
+        result = '| Product Code | Name | Price |\n' + '|--|--|--|\n' + '| Basket | Total price expected |\n' + '|--|--|\n' + '|  | 0€ |'
+        self.assertEqual(output, result) 
+        self.assertEqual(mock_input.call_count, 4)
+
+    @patch('builtins.input')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_wrong_input_2(self, stdout_mock, mock_input):
+        mock_input.side_effect = ['GR1', 'Green Tea', '', 'close_cash_register', '']
+        compute()
+        output = stdout_mock.getvalue().strip()
+        result = '| Product Code | Name | Price |\n' + '|--|--|--|\n' + '| Basket | Total price expected |\n' + '|--|--|\n' + '|  | 0€ |'
+        self.assertEqual(output, result) 
+        self.assertEqual(mock_input.call_count, 5)
+    
+    @patch('builtins.input')
+    @patch('sys.stdout', new_callable=StringIO)
     def test_two_products(self, stdout_mock, mock_input):
         mock_input.side_effect = ["GR1", "Green Tea", 3.11, "SR1", "Strawberries", 5, '', 'close_cash_register', '']
         compute()

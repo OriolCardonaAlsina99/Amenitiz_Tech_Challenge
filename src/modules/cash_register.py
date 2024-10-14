@@ -20,7 +20,7 @@ def compute():
     prod_name = None
     prod_price = 0.0
     while not close_program(identifier, prod_name):
-        if(identifier != '' and prod_name != ''):
+        if(identifier != '' and prod_name != '' and prod_price != ''):
             print('| Product Code | Name | Price |') 
             print('|--|--|--|')
         products = []
