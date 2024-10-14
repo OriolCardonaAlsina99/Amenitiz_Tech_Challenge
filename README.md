@@ -103,7 +103,7 @@ Example:
 python3 -m unittest  test_cash_register.TestCashRegister.test_one_product
 ```
 
-Where the last parameter is the name of the method. Each method has its parameters that are introduced when the console is running. To clarify, after one input, intro key has to be pressed to go to the next input (like in the cash register) and a '' is the equivalent to press intro key without wrinting anything (the way the program understands that something is finished). Doing this can be a bit tedious, so that is why the prior command was created, to tackle more independently the input testing, but quickly testing the rest of the methods.
+Where the last parameter is the name of the method. Each method has its parameters that are introduced when the console is running. To clarify, after one input, intro key has to be pressed to go to the next input (like in the cash register) and a '' is the equivalent to press intro key without wrinting anything (the way the program understands that something is finished). Doing this can be a bit tedious, so that is why the prior command was created, to tackle more independently the input testing, but quickly testing the rest of the methods. Also I introduced some explanations to each test that explain what they do in a commented line.
 
 ## Versions
 It hasn't been added a versioning system, the track of the changes it is in the commit history.

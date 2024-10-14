@@ -9,6 +9,7 @@ from modules.cash_register import compute
 class TestCashRegister (unittest.TestCase):
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+
     # Test to check the input of only one product
     def test_one_product(self, stdout_mock, mock_input):
         mock_input.side_effect = ["GR1", "Green Tea", 3.11, '', 'close_cash_register', '']
@@ -20,6 +21,7 @@ class TestCashRegister (unittest.TestCase):
 
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+
     # Test to check when no products are introduced
     def test_no_products(self, stdout_mock, mock_input):
         mock_input.side_effect = ['', 'close_cash_register', '']
@@ -31,6 +33,7 @@ class TestCashRegister (unittest.TestCase):
     
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+
     # Test to check that not fully introducing a product leads to the product not being added
     def test_wrong_input_1(self, stdout_mock, mock_input):
         mock_input.side_effect = ['GR1', '', 'close_cash_register', '']
@@ -42,6 +45,7 @@ class TestCashRegister (unittest.TestCase):
 
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+
     # Test to check that not fully introducing a product leads to the product not being added
     def test_wrong_input_2(self, stdout_mock, mock_input):
         mock_input.side_effect = ['GR1', 'Green Tea', '', 'close_cash_register', '']
@@ -53,6 +57,7 @@ class TestCashRegister (unittest.TestCase):
     
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+
     # Test to check the input of multiple products
     def test_two_products(self, stdout_mock, mock_input):
         mock_input.side_effect = ["GR1", "Green Tea", 3.11, "SR1", "Strawberries", 5, '', 'close_cash_register', '']
@@ -64,6 +69,7 @@ class TestCashRegister (unittest.TestCase):
 
     @patch('builtins.input')
     @patch('sys.stdout', new_callable=StringIO)
+    
     # Test to check that the price is a number
     def test_wrong_price(self, stdout_mock, mock_input):
         mock_input.side_effect = ["Test", "Test", "Test", 'close_cash_register', '']
