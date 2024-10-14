@@ -36,16 +36,14 @@ def compute():
             if(prod_price == ''):
                 break
             if(price_is_float(prod_price)):
-                price = float(prod_price)
-                product = Product(identifier, prod_name, price)
+                product = Product(identifier, prod_name, float(prod_price))
                 print('| ' + product.getId() + ' | ' + product.getName() + ' | ' + str(product.getPrice()) + '€ |')
                 products.append(product)
                 ids += product.getId() + ','
             else:
                 print("Price must be a number")
 
-        rules_prices = handle_rules(products)
-        total_price = handle_basket(products, rules_prices)
+        total_price = handle_basket(products, handle_rules(products))
         if not close_program(identifier, prod_name):
             print('| Basket | Total price expected |')
             print('|--|--|')
