@@ -7,12 +7,14 @@ from modules.ceo_rule import CEO_rule
 
 class TestCEORule (unittest.TestCase):
 
+    # Test for the edge case of not enough products to test the discount
     def test_no_offer(self):
         prod = Product('GR1', 'Green Tea', 3.11)
         arr_prods = [prod]
         result = CEO_rule(arr_prods)
         self.assertEqual(result, 3.11)
 
+    # Test when we are have enough products for a discount
     def test_especial_offer(self):
         prod1 = Product('GR1', 'Green Tea', 3.11)
         prod2 = Product('GR1', 'Green Tea', 3.11)
@@ -20,11 +22,13 @@ class TestCEORule (unittest.TestCase):
         result = CEO_rule(arr_prods)
         self.assertEqual(result, 3.11)
 
+    # Test when no products are introduced
     def test_no_products(self):
         arr_prods = []
         result = CEO_rule(arr_prods)
         self.assertEqual(result, 0)
 
+    # Test when there are enough products that some do not apply for discount
     def test_many_products(self):
         prod1 = Product('GR1', 'Green Tea', 3.11)
         prod2 = Product('GR1', 'Green Tea', 3.11)
